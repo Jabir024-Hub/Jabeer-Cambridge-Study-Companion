@@ -1,0 +1,282 @@
+const TOPICS=["Physical quantities & measurement","Motion","Density","Mass & weight","Forces","Momentum","Energy, work & power","Pressure","Kinetic particle model"];
+const LESSONS={
+"Physical quantities & measurement":{icon:"📏",visual:"📏",title:"Measure carefully",visualText:"A measurement needs a numerical value and a unit.",text:"Physical quantities are properties that can be measured. Scientists use standard units so measurements can be compared. Common examples include length, mass, time and temperature.",remember:["Length → metre (m)","Mass → kilogram (kg)","Time → second (s)","Temperature → degree Celsius (°C)","Choose an instrument suited to the measurement."],example:"A ruler shows 15 cm for a pencil. The quantity is length and the unit is centimetres."},
+"Motion":{icon:"🚗",visual:"🚗",title:"Motion means changing position",visualText:"Speed tells us how quickly distance is covered.",text:"Motion describes how an object's position changes. Speed tells us how much distance an object covers in a given time. Always keep units consistent.",remember:["Speed = distance ÷ time","Distance = speed × time","Time = distance ÷ speed","Speed is commonly measured in m/s."],example:"A cyclist travels 120 m in 20 s. Speed = 120 ÷ 20 = 6 m/s."},
+"Density":{icon:"🧊",visual:"🧊",title:"How tightly matter is packed",visualText:"Density compares mass with volume.",text:"Density tells us how much mass is contained in a certain volume. A dense material has more mass packed into a given volume.",remember:["Density = mass ÷ volume","Mass can be measured in g or kg","Volume can be measured in cm³ or m³","Keep units consistent."],example:"Mass = 200 g and volume = 50 cm³. Density = 200 ÷ 50 = 4 g/cm³."},
+"Mass & weight":{icon:"⚖️",visual:"⚖️",title:"Mass is not weight",visualText:"Mass measures matter; weight is gravitational force.",text:"Mass is measured in kilograms. Weight is a force and is measured in newtons. Weight depends on gravitational field strength.",remember:["Mass → kg","Weight → N","Weight = mass × gravitational field strength","The same mass can have different weight in different gravitational fields."],example:"A 5 kg object where g = 10 N/kg has weight 50 N."},
+"Forces":{icon:"💪",visual:"🛒",title:"Forces are pushes or pulls",visualText:"A force can change an object's motion or shape.",text:"Forces are measured in newtons. An unbalanced force can change motion; a force can also deform an object.",remember:["Force → newton (N)","Balanced forces have zero resultant","Unbalanced forces can cause acceleration","Friction and air resistance can oppose motion."],example:"10 N right and 4 N left gives a resultant force of 6 N right."},
+"Momentum":{icon:"🏎️",visual:"🏎️",title:"Moving objects have momentum",visualText:"Momentum depends on mass and velocity.",text:"Momentum is the product of mass and velocity. Use SI units where possible.",remember:["p = m × v","Momentum → kg m/s","More mass at the same velocity means more momentum","More velocity at the same mass means more momentum."],example:"A 2 kg object moving at 3 m/s has momentum 6 kg m/s."},
+"Energy, work & power":{icon:"⚡",visual:"⚡",title:"Energy can be transferred",visualText:"Work is energy transferred by a force; power is the rate of transfer.",text:"Energy is measured in joules. Work done is force multiplied by distance moved in the direction of the force. Power tells us how quickly energy is transferred.",remember:["Work = force × distance","Energy → joules (J)","Power = energy transferred ÷ time","Power → watts (W)."],example:"A 20 N force moves an object 3 m. Work done = 60 J."},
+"Pressure":{icon:"📌",visual:"📌",title:"Force over an area",visualText:"Pressure increases when the same force acts over a smaller area.",text:"Pressure is force per unit area. The SI unit is the pascal. Sharp objects and narrow contact areas can produce high pressure.",remember:["Pressure = force ÷ area","Pressure → pascals (Pa)","Smaller area → higher pressure for the same force","Larger area → lower pressure for the same force."],example:"A 100 N force over 2 m² gives 50 Pa."},
+"Kinetic particle model":{icon:"🔴",visual:"🔴 🔵 🟢",title:"Tiny particles are always moving",visualText:"The particle model explains solids, liquids and gases.",text:"Matter is made from tiny particles that are constantly moving. Solids have closely packed particles; liquids have close particles that can move past each other; gases have widely spaced particles moving freely.",remember:["Solid → close particles, fixed positions","Liquid → close particles, can flow","Gas → particles far apart and moving freely","Heating generally increases particle kinetic energy."],example:"When water is heated, its particles gain kinetic energy and move faster."}
+};
+function Q(topic,difficulty,q,a,c,e){return{id:"",topic,difficulty,q,a,c,e}}
+const QUESTIONS=[
+Q("Physical quantities & measurement","easy","Which physical quantity is measured in metres?",["Length","Mass","Time","Temperature"],0,"Length is commonly measured in metres."),
+Q("Physical quantities & measurement","easy","Which unit is used for mass?",["kilogram","metre","second","newton"],0,"Mass is commonly measured in kilograms."),
+Q("Physical quantities & measurement","easy","Which unit is used for time?",["second","metre","kilogram","joule"],0,"The SI unit for time is the second."),
+Q("Physical quantities & measurement","easy","Which instrument measures temperature?",["Thermometer","Ruler","Balance","Stopwatch"],0,"A thermometer measures temperature."),
+Q("Physical quantities & measurement","easy","Which instrument measures mass?",["Balance","Thermometer","Ruler","Stopwatch"],0,"A balance measures mass."),
+Q("Physical quantities & measurement","medium","How many centimetres are in 1 metre?",["10","50","100","1000"],2,"1 metre = 100 centimetres."),
+Q("Physical quantities & measurement","medium","What causes parallax error?",["Viewing a scale from the wrong angle","Changing mass","Changing unit","Using seconds"],0,"Parallax occurs when a scale is viewed from an angle."),
+Q("Physical quantities & measurement","medium","How should your eye be positioned when reading a scale?",["At the same level as the reading","Above the scale","Below the scale","At any angle"],0,"Eye-level reading helps reduce parallax."),
+Q("Physical quantities & measurement","medium","What is 250 cm in metres?",["0.25 m","2.5 m","25 m","2500 m"],1,"250 ÷ 100 = 2.5 m."),
+Q("Physical quantities & measurement","hard","A ruler starts at 2.0 cm and ends at 17.5 cm. What is the object's length?",["15.5 cm","19.5 cm","17.5 cm","2.0 cm"],0,"17.5 − 2.0 = 15.5 cm."),
+Q("Motion","easy","What does speed tell us?",["How quickly an object moves","How heavy it is","How hot it is","How much space it has"],0,"Speed tells us how quickly distance is covered."),
+Q("Motion","easy","What is the formula for speed?",["Distance ÷ time","Time ÷ distance","Distance × time","Mass ÷ volume"],0,"Speed = distance ÷ time."),
+Q("Motion","easy","What is a common unit for speed?",["m/s","kg","N","J"],0,"Speed is commonly measured in metres per second."),
+Q("Motion","easy","A car travels 100 m in 20 s. What is its speed?",["2 m/s","5 m/s","20 m/s","120 m/s"],1,"100 ÷ 20 = 5 m/s."),
+Q("Motion","easy","A runner travels 50 m in 10 s. What is the speed?",["5 m/s","10 m/s","40 m/s","60 m/s"],0,"50 ÷ 10 = 5 m/s."),
+Q("Motion","easy","What is the formula for distance?",["Speed × time","Speed ÷ time","Time ÷ speed","Mass × volume"],0,"Distance = speed × time."),
+Q("Motion","easy","What is the formula for time?",["Distance ÷ speed","Distance × speed","Speed ÷ distance","Mass ÷ volume"],0,"Time = distance ÷ speed."),
+Q("Motion","easy","A car travels at 10 m/s for 5 s. How far does it travel?",["2 m","15 m","50 m","100 m"],2,"10 × 5 = 50 m."),
+Q("Motion","easy","A runner travels 100 m at 5 m/s. How long does it take?",["5 s","10 s","20 s","500 s"],2,"100 ÷ 5 = 20 s."),
+Q("Motion","medium","A car travels 240 m in 30 s. What is its speed?",["6 m/s","8 m/s","10 m/s","12 m/s"],1,"240 ÷ 30 = 8 m/s."),
+Q("Motion","medium","A train travels 600 m in 30 s. What is its speed?",["10 m/s","15 m/s","20 m/s","30 m/s"],2,"600 ÷ 30 = 20 m/s."),
+Q("Motion","medium","A cyclist travels at 12 m/s for 10 s. What distance is covered?",["22 m","120 m","1.2 m","1200 m"],1,"12 × 10 = 120 m."),
+Q("Motion","medium","A runner travels 400 m at 8 m/s. How long does it take?",["40 s","50 s","60 s","80 s"],1,"400 ÷ 8 = 50 s."),
+Q("Motion","hard","A car travels 300 m in 20 s and 200 m in 10 s. What is the average speed?",["12.5 m/s","16.7 m/s","20 m/s","30 m/s"],1,"Total distance 500 m ÷ total time 30 s ≈ 16.7 m/s."),
+Q("Motion","hard","A cyclist travels 1.5 km in 5 minutes. What is the average speed in m/s?",["2 m/s","5 m/s","6 m/s","10 m/s"],1,"1.5 km = 1500 m and 5 min = 300 s, so 5 m/s."),
+Q("Density","easy","What is density?",["Mass per unit volume","Volume per unit mass","Mass multiplied by volume","Weight per unit area"],0,"Density is mass per unit volume."),
+Q("Density","easy","What is the formula for density?",["Mass ÷ volume","Volume ÷ mass","Mass × volume","Force ÷ area"],0,"Density = mass ÷ volume."),
+Q("Density","easy","What are needed to calculate density?",["Mass and volume","Force and time","Distance and time","Weight and pressure"],0,"Density is calculated from mass and volume."),
+Q("Density","easy","A block has mass 100 g and volume 20 cm³. What is its density?",["2 g/cm³","5 g/cm³","20 g/cm³","2000 g/cm³"],1,"100 ÷ 20 = 5 g/cm³."),
+Q("Density","medium","A substance has density 4 g/cm³ and volume 25 cm³. What is its mass?",["6.25 g","29 g","100 g","400 g"],2,"Mass = density × volume = 4 × 25 = 100 g."),
+Q("Density","medium","A material has mass 300 g and density 5 g/cm³. What is its volume?",["30 cm³","50 cm³","60 cm³","1500 cm³"],2,"Volume = 300 ÷ 5 = 60 cm³."),
+Q("Density","medium","Water rises from 40 cm³ to 65 cm³ when an object is submerged. What is its volume?",["25 cm³","40 cm³","65 cm³","105 cm³"],0,"65 − 40 = 25 cm³."),
+Q("Density","hard","A stone has mass 150 g and volume 60 cm³. What is its density?",["1.5 g/cm³","2.0 g/cm³","2.5 g/cm³","3.0 g/cm³"],2,"150 ÷ 60 = 2.5 g/cm³."),
+Q("Mass & weight","easy","What is mass?",["The amount of matter in an object","A force due to gravity","The object's speed","Its volume"],0,"Mass measures the amount of matter."),
+Q("Mass & weight","easy","What is weight?",["The gravitational force acting on an object","The amount of matter","The volume","The temperature"],0,"Weight is gravitational force."),
+Q("Mass & weight","easy","Which unit is used for mass?",["kg","N","J","Pa"],0,"Mass is measured in kilograms."),
+Q("Mass & weight","easy","Which unit is used for weight?",["N","kg","J","m"],0,"Weight is a force measured in newtons."),
+Q("Mass & weight","easy","What is the formula for weight?",["mass × gravitational field strength","mass ÷ gravitational field strength","mass + gravitational field strength","volume × mass"],0,"Weight = mass × gravitational field strength."),
+Q("Mass & weight","medium","What is the weight of a 5 kg object using g = 10 N/kg?",["5 N","10 N","50 N","500 N"],2,"Weight = 5 × 10 = 50 N."),
+Q("Mass & weight","medium","An object weighs 60 N where g = 10 N/kg. What is its mass?",["6 kg","10 kg","50 kg","600 kg"],0,"Mass = 60 ÷ 10 = 6 kg."),
+Q("Mass & weight","hard","A 25 kg box is where g = 9.8 N/kg. What is its weight?",["49 N","98 N","245 N","250 N"],2,"25 × 9.8 = 245 N."),
+Q("Forces","easy","What is a force?",["A push or a pull","A type of energy","A time measurement","A type of mass"],0,"A force is a push or pull."),
+Q("Forces","easy","What is the unit of force?",["Newton","Joule","Pascal","Kilogram"],0,"Force is measured in newtons."),
+Q("Forces","easy","Which force pulls objects toward Earth?",["Gravity","Friction","Magnetism","Air resistance"],0,"Gravity attracts objects toward Earth."),
+Q("Forces","easy","Which force opposes motion between surfaces?",["Friction","Gravity","Upthrust","Magnetism"],0,"Friction acts against relative motion."),
+Q("Forces","medium","8 N and 3 N act in the same direction. Resultant?",["5 N","11 N","24 N","8 N"],1,"8 + 3 = 11 N."),
+Q("Forces","medium","12 N and 5 N act in opposite directions. Resultant?",["7 N","17 N","60 N","5 N"],0,"12 − 5 = 7 N."),
+Q("Forces","medium","20 N right and 20 N left act on an object. Resultant?",["0 N","20 N right","20 N left","40 N"],0,"Equal opposite forces cancel."),
+Q("Forces","hard","30 N right and 18 N left. Resultant?",["12 N right","12 N left","48 N right","18 N right"],0,"30 − 18 = 12 N right."),
+Q("Momentum","easy","What is momentum?",["A quantity related to mass and motion","A temperature measurement","A type of volume","A unit of energy"],0,"Momentum depends on mass and velocity."),
+Q("Momentum","easy","What is the formula for momentum?",["p = m × v","p = m ÷ v","p = v ÷ m","p = F × A"],0,"Momentum equals mass multiplied by velocity."),
+Q("Momentum","easy","What is the usual unit of momentum?",["kg m/s","N","J","Pa"],0,"Momentum is measured in kg m/s."),
+Q("Momentum","easy","A 2 kg object moves at 3 m/s. What is its momentum?",["5 kg m/s","6 kg m/s","9 kg m/s","1.5 kg m/s"],1,"2 × 3 = 6 kg m/s."),
+Q("Momentum","medium","A 4 kg object moves at 5 m/s. What is its momentum?",["9 kg m/s","20 kg m/s","25 kg m/s","1.25 kg m/s"],1,"4 × 5 = 20 kg m/s."),
+Q("Momentum","medium","An object has momentum 60 kg m/s and mass 12 kg. What is its velocity?",["2 m/s","5 m/s","12 m/s","72 m/s"],1,"60 ÷ 12 = 5 m/s."),
+Q("Momentum","hard","A 1200 kg car travels at 20 m/s. What is its momentum?",["2400 kg m/s","12000 kg m/s","24000 kg m/s","48000 kg m/s"],2,"1200 × 20 = 24000 kg m/s."),
+Q("Energy, work & power","easy","What is energy?",["The ability to cause change or do work","A measurement of mass","A force unit","The volume of an object"],0,"Energy enables work or change."),
+Q("Energy, work & power","easy","What is the unit of energy?",["Joule","Newton","Pascal","Watt"],0,"Energy is measured in joules."),
+Q("Energy, work & power","easy","What is the formula for work done?",["force × distance","force ÷ distance","distance ÷ time","mass × velocity"],0,"Work = force × distance."),
+Q("Energy, work & power","easy","What is power?",["The rate of energy transfer","The mass of an object","The volume of an object","The force on an object"],0,"Power is energy transfer per unit time."),
+Q("Energy, work & power","medium","A 10 N force moves an object 2 m. What work is done?",["5 J","12 J","20 J","30 J"],2,"10 × 2 = 20 J."),
+Q("Energy, work & power","medium","500 J is transferred in 10 s. What is the power?",["5 W","50 W","500 W","5000 W"],1,"500 ÷ 10 = 50 W."),
+Q("Energy, work & power","hard","A crane applies 200 N through 5 m. How much work is done?",["40 J","195 J","1000 J","2000 J"],2,"200 × 5 = 1000 J."),
+Q("Pressure","easy","What is pressure?",["Force per unit area","Mass per unit volume","Distance per unit time","Energy per unit time"],0,"Pressure is force divided by area."),
+Q("Pressure","easy","What is the formula for pressure?",["force ÷ area","force × area","area ÷ force","mass ÷ volume"],0,"Pressure = force ÷ area."),
+Q("Pressure","easy","What is the unit of pressure?",["Pascal","Newton","Joule","Watt"],0,"Pressure is measured in pascals."),
+Q("Pressure","easy","For the same force, a smaller area gives...",["higher pressure","lower pressure","zero pressure","the same pressure"],0,"Pressure increases when area decreases."),
+Q("Pressure","medium","A 100 N force acts over 5 m². What is the pressure?",["20 Pa","50 Pa","100 Pa","500 Pa"],0,"100 ÷ 5 = 20 Pa."),
+Q("Pressure","medium","A pressure of 50 Pa acts over 4 m². What force is acting?",["12.5 N","54 N","200 N","250 N"],2,"Force = pressure × area = 50 × 4 = 200 N."),
+Q("Pressure","hard","A 1000 N force acts over 0.5 m². What is the pressure?",["500 Pa","1000 Pa","2000 Pa","5000 Pa"],2,"1000 ÷ 0.5 = 2000 Pa."),
+Q("Kinetic particle model","easy","What does the kinetic particle model say matter is made of?",["Tiny particles","Only water","Only gases","Empty space only"],0,"Matter is modeled as tiny particles."),
+Q("Kinetic particle model","easy","Which state has a fixed shape and fixed volume?",["Solid","Liquid","Gas","All three"],0,"A solid has fixed shape and volume."),
+Q("Kinetic particle model","easy","Which state has a fixed volume but no fixed shape?",["Solid","Liquid","Gas","None"],1,"A liquid keeps its volume but takes the container's shape."),
+Q("Kinetic particle model","easy","Which state has no fixed shape or volume?",["Solid","Liquid","Gas","Crystal"],2,"A gas spreads through available space."),
+Q("Kinetic particle model","easy","Which state is easiest to compress?",["Gas","Liquid","Solid","All equally"],0,"There are large spaces between gas particles."),
+Q("Kinetic particle model","easy","What happens to particle movement when a substance is heated?",["It generally increases","It stops","It disappears","It decreases"],0,"Heating generally gives particles more kinetic energy."),
+Q("Kinetic particle model","medium","Why does a liquid take the shape of its container?",["Its particles can move around one another","Its particles are fixed","It has no particles","Gravity disappears"],0,"Liquid particles can move past one another."),
+Q("Kinetic particle model","medium","Why can evaporation happen below the boiling point?",["Some surface particles have enough energy to escape","All particles have exactly the same energy","The liquid has no particles","Gravity stops"],0,"Particles have a range of energies."),
+Q("Kinetic particle model","hard","A sealed rigid gas container is heated. Why can pressure increase?",["Particles move faster and collide more energetically","Particles become heavier","Particles disappear","Volume becomes zero"],0,"Heating increases particle kinetic energy and collision strength."),
+Q("Kinetic particle model","hard","Why does a gas exert pressure on its container walls?",["Particles collide with the walls","Gas has no particles","Walls create pressure","Gas has no kinetic energy"],0,"Gas pressure results from particle collisions with the walls."),
+Q("Mixed Physics revision","medium","Which formula calculates speed?",["distance ÷ time","mass ÷ volume","force ÷ area","mass × velocity"],0,"Speed = distance ÷ time."),
+Q("Mixed Physics revision","medium","A 4 kg object travels at 5 m/s. What is its momentum?",["9 kg m/s","20 kg m/s","25 kg m/s","1.25 kg m/s"],1,"4 × 5 = 20 kg m/s."),
+Q("Mixed Physics revision","medium","A 30 N force moves an object 4 m. What work is done?",["7.5 J","34 J","120 J","150 J"],2,"30 × 4 = 120 J."),
+Q("Mixed Physics revision","medium","A 200 N force acts over 5 m². What is the pressure?",["20 Pa","40 Pa","100 Pa","1000 Pa"],1,"200 ÷ 5 = 40 Pa."),
+Q("Mixed Physics revision","hard","A 900 kg car travels at 20 m/s. What is its momentum?",["1800 kg m/s","9000 kg m/s","18000 kg m/s","45000 kg m/s"],2,"900 × 20 = 18000 kg m/s."),
+Q("Mixed Physics revision","hard","A 50 W device runs for 3 minutes. How much energy is transferred?",["150 J","500 J","9000 J","15000 J"],2,"3 minutes = 180 s; 50 × 180 = 9000 J.")
+];
+QUESTIONS.forEach((item,i)=>item.id=`physics-${i+1}`);
+const FORMULAS=[
+  ["Motion","Speed","speed = distance ÷ time","Distance covered per unit time."],
+  ["Motion","Distance","distance = speed × time","Rearrangement of the speed equation."],
+  ["Motion","Time","time = distance ÷ speed","Rearrangement of the speed equation."],
+  ["Density","Density","density = mass ÷ volume","Mass per unit volume."],
+  ["Density","Mass","mass = density × volume","Rearrangement of the density equation."],
+  ["Density","Volume","volume = mass ÷ density","Rearrangement of the density equation."],
+  ["Mass & weight","Weight","weight = mass × g","Weight is gravitational force."],
+  ["Momentum","Momentum","p = m × v","Momentum depends on mass and velocity."],
+  ["Energy, work & power","Work","work = force × distance","Energy transferred by a force through distance."],
+  ["Energy, work & power","Power","power = energy transferred ÷ time","Rate of energy transfer."],
+  ["Pressure","Pressure","pressure = force ÷ area","Force per unit area."]
+];
+let state=JSON.parse(localStorage.getItem("JabeerStudyData")||"null")||{xp:0,dailyXP:0,streak:1,answered:0,correct:0,lessons:[],mastered:[],seen:{},lastStudyDay:""};
+let currentTopic=null;
+let practice={questions:[],position:0,score:0,answered:false};
+let challenge={questions:[],position:0,score:0,answered:false,topic:null};
+function save(){localStorage.setItem("JabeerStudyData",JSON.stringify(state));}
+function shuffle(arr){const a=[...arr];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function updateStudyDay(){const today=new Date().toISOString().slice(0,10);if(state.lastStudyDay!==today){if(state.lastStudyDay){const prev=new Date(state.lastStudyDay+"T00:00:00"),now=new Date(today+"T00:00:00"),days=Math.round((now-prev)/86400000);state.streak=days===1?state.streak+1:1;}state.lastStudyDay=today;state.dailyXP=0;save();}}
+function addXP(n){updateStudyDay();state.xp+=n;state.dailyXP=Math.min(50,state.dailyXP+n);save();updateUI();}
+function showPage(id){document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));document.getElementById(id).classList.add("active");window.scrollTo({top:0,behavior:"smooth"});if(id==="physics")renderMap();if(id==="progress")renderMastery();}
+function renderMap(){const root=document.getElementById("topicMap");root.innerHTML="";TOPICS.forEach((topic,index)=>{const learned=state.lessons.includes(topic),mastered=state.mastered.includes(topic),unlocked=index===0||state.mastered.includes(TOPICS[index-1]);const card=document.createElement("div");card.className="topic-card"+(unlocked?"":" locked");card.innerHTML=`<div class="topic-number">${mastered?"🏆":index+1}</div><div><h3>${LESSONS[topic].icon} ${topic}</h3><p>${mastered?"Topic mastered!":learned?"Lesson completed.":unlocked?"Start learning.":"Master the previous topic first."}</p><span class="status">${mastered?"80%+ challenge passed":unlocked?"Unlocked":"Locked"}</span></div><button class="primary">${mastered?"Review":learned?"Practice":unlocked?"Learn":"Locked"} →</button>`;if(unlocked)card.querySelector("button").onclick=()=>openLesson(topic);root.appendChild(card);});}
+function openLesson(topic){currentTopic=topic;const l=LESSONS[topic];document.getElementById("lessonIcon").textContent=l.icon;document.getElementById("lessonTitle").textContent=topic;document.getElementById("visualEmoji").textContent=l.visual;document.getElementById("visualTitle").textContent=l.title;document.getElementById("visualText").textContent=l.visualText;document.getElementById("lessonText").textContent=l.text;document.getElementById("rememberList").innerHTML=l.remember.map(x=>`<li>${x}</li>`).join("");document.getElementById("exampleText").textContent=l.example;showPage("lesson");}
+function finishLesson(){if(!currentTopic)return;if(!state.lessons.includes(currentTopic)){state.lessons.push(currentTopic);save();addXP(5);alert("🎉 Lesson complete!\n+5 XP");}else alert("You've already completed this lesson.");renderMap();showPage("physics");}
+function populateSelectors(){const options=TOPICS.map(t=>`<option value="${t}">${t}</option>`).join("");document.getElementById("practiceTopic").innerHTML=options;document.getElementById("challengeTopic").innerHTML=options;}
+function practiceCurrentTopic(){if(!currentTopic)return;document.getElementById("practiceTopic").value=currentTopic;showPage("practice");}
+function getQuestions(topic,count){const pool=QUESTIONS.filter(q=>q.topic===topic);let unseen=shuffle(pool.filter(q=>!state.seen[q.id]));if(unseen.length<count)unseen=unseen.concat(shuffle(pool.filter(q=>state.seen[q.id])));return unseen.slice(0,Math.min(count,unseen.length));}
+function randomizeQuestion(original){const answers=shuffle(original.a.map((text,index)=>({text,index})));return{...original,answers,correct:answers.findIndex(x=>x.index===original.c)};}
+function markSeen(q){state.seen[q.id]=true;save();}
+function startPractice(){const topic=document.getElementById("practiceTopic").value;practice.questions=getQuestions(topic,5).map(randomizeQuestion);practice.position=0;practice.score=0;if(!practice.questions.length)return alert("No questions available for this topic yet.");document.getElementById("practiceSetup").classList.add("hidden");document.getElementById("practiceQuiz").classList.remove("hidden");renderPractice();}
+function renderPractice(){const q=practice.questions[practice.position],total=practice.questions.length;markSeen(q);document.getElementById("practiceCounter").textContent=`Question ${practice.position+1} / ${total}`;document.getElementById("practiceScore").textContent=`${practice.score} correct`;document.getElementById("practiceBar").style.width=`${practice.position/total*100}%`;document.getElementById("practiceQuestion").textContent=q.q;document.getElementById("practiceFeedback").textContent="";document.getElementById("practiceNext").classList.add("hidden");const root=document.getElementById("practiceAnswers");root.innerHTML="";q.answers.forEach((choice,i)=>{const b=document.createElement("button");b.className="answer";b.textContent=choice.text;b.onclick=()=>answerPractice(i,b);root.appendChild(b);});practice.answered=false;}
+function answerPractice(i,b){if(practice.answered)return;practice.answered=true;const q=practice.questions[practice.position];state.answered++;if(i===q.correct){practice.score++;state.correct++;b.classList.add("correct");document.getElementById("practiceFeedback").textContent="✅ Correct!";}else{b.classList.add("wrong");const correct=q.answers[q.correct].text;document.querySelectorAll("#practiceAnswers .answer").forEach(x=>{if(x.textContent===correct)x.classList.add("correct")});document.getElementById("practiceFeedback").textContent=`❌ Correct answer: ${correct}`;}save();updateUI();document.getElementById("practiceNext").classList.remove("hidden");}
+function nextPractice(){practice.position++;if(practice.position>=practice.questions.length)finishPractice();else renderPractice();}
+function finishPractice(){addXP(5);const topic=document.getElementById("practiceTopic").value,pct=Math.round(practice.score/practice.questions.length*100);if(pct>=80&&!state.mastered.includes(topic)){state.mastered.push(topic);addXP(10);alert(`🏆 TOPIC MASTERED!\n${practice.score}/${practice.questions.length}\n${pct}%\n+5 XP Practice\n+10 XP Mastery Bonus`);}else alert(`🎉 Practice complete!\n${practice.score}/${practice.questions.length}\n${pct}%\n+5 XP`);save();renderMap();document.getElementById("practiceSetup").classList.remove("hidden");document.getElementById("practiceQuiz").classList.add("hidden");}
+function startChallenge(){const topic=document.getElementById("challengeTopic").value;challenge.topic=topic;challenge.questions=getQuestions(topic,25).map(randomizeQuestion);challenge.position=0;challenge.score=0;if(!challenge.questions.length)return alert("No questions available for this topic yet.");document.getElementById("challengeSetup").classList.add("hidden");document.getElementById("challengeQuiz").classList.remove("hidden");renderChallenge();}
+function renderChallenge(){const q=challenge.questions[challenge.position],total=challenge.questions.length;markSeen(q);document.getElementById("challengeCounter").textContent=`Question ${challenge.position+1} / ${total}`;document.getElementById("challengeScore").textContent=`${challenge.score} correct`;document.getElementById("challengeBar").style.width=`${challenge.position/total*100}%`;document.getElementById("challengeQuestion").textContent=q.q;document.getElementById("challengeFeedback").textContent="";document.getElementById("challengeNext").classList.add("hidden");const root=document.getElementById("challengeAnswers");root.innerHTML="";q.answers.forEach((choice,i)=>{const b=document.createElement("button");b.className="answer";b.textContent=choice.text;b.onclick=()=>answerChallenge(i,b);root.appendChild(b);});challenge.answered=false;}
+function answerChallenge(i,b){if(challenge.answered)return;challenge.answered=true;const q=challenge.questions[challenge.position];state.answered++;if(i===q.correct){challenge.score++;state.correct++;b.classList.add("correct");document.getElementById("challengeFeedback").textContent="✅ Correct!";}else{b.classList.add("wrong");const correct=q.answers[q.correct].text;document.querySelectorAll("#challengeAnswers .answer").forEach(x=>{if(x.textContent===correct)x.classList.add("correct")});document.getElementById("challengeFeedback").textContent=`❌ Correct answer: ${correct}`;}save();updateUI();document.getElementById("challengeNext").classList.remove("hidden");}
+function nextChallenge(){challenge.position++;if(challenge.position>=challenge.questions.length)finishChallenge();else renderChallenge();}
+function finishChallenge(){const total=challenge.questions.length,pct=Math.round(challenge.score/total*100);addXP(25);if(pct>=80&&!state.mastered.includes(challenge.topic)){state.mastered.push(challenge.topic);addXP(10);alert(`🏆 Topic mastered!\n${challenge.score}/${total} (${pct}%)\n+25 XP Challenge\n+10 XP Mastery Bonus`);}else alert(`🎉 Challenge complete!\n${challenge.score}/${total} (${pct}%)\n+25 XP`);save();renderMap();document.getElementById("challengeSetup").classList.remove("hidden");document.getElementById("challengeQuiz").classList.add("hidden");}
+function renderFormulas(){const root=document.getElementById("formulaGrid");root.innerHTML="";FORMULAS.forEach(f=>{const c=document.createElement("div");c.className="formula";c.innerHTML=`<small>${f[0]}</small><h3>${f[1]}</h3><h2>${f[2]}</h2><p>${f[3]}</p>`;root.appendChild(c);});}
+function renderMastery(){const overall=Math.round(state.mastered.length/TOPICS.length*100);document.getElementById("masteryPercent").textContent=`${overall}%`;document.getElementById("masteryBar").style.width=`${overall}%`;const root=document.getElementById("masteryList");root.innerHTML="";TOPICS.forEach((t,i)=>{const pct=state.mastered.includes(t)?100:state.lessons.includes(t)?50:0;const r=document.createElement("div");r.className="mastery-item";r.innerHTML=`<div class="mastery-top"><span>${i+1}. ${t}</span><span>${pct}%</span></div><div class="bar"><div style="width:${pct}%"></div></div>`;root.appendChild(r);});}
+function updateUI(){updateStudyDay();document.getElementById("xp").textContent=state.xp;document.getElementById("dailyXP").textContent=state.dailyXP;document.getElementById("streak").textContent=state.streak;document.getElementById("dailyProgress").style.width=`${state.dailyXP*2}%`;const mastery=Math.round(state.mastered.length/TOPICS.length*100);document.getElementById("homePhysicsBar").style.width=`${mastery}%`;document.getElementById("statXP").textContent=state.xp;document.getElementById("statStreak").textContent=state.streak;document.getElementById("statQuestions").textContent=state.answered;document.getElementById("statAccuracy").textContent=`${state.answered?Math.round(state.correct/state.answered*100):0}%`;}
+function init(){updateStudyDay();populateSelectors();renderFormulas();renderMap();updateUI();}
+init();
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jabeer Study — Cambridge Grade 8 Physics learning app">
+  <title>Jabeer Study</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="navbar">
+  <button class="logo" onclick="showPage('home')">✦ Jabeer Study</button>
+  <nav>
+    <button onclick="showPage('home')">Home</button>
+    <button onclick="showPage('physics')">Physics</button>
+    <button onclick="showPage('practice')">Practice</button>
+    <button onclick="showPage('formulas')">Formulas</button>
+    <button onclick="showPage('progress')">Progress</button>
+  </nav>
+  <div class="xp-pill">⭐ <span id="xp">0</span> XP</div>
+</header>
+<main>
+<section id="home" class="page active">
+  <div class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">CAMBRIDGE • GRADE 8</p>
+      <h1>Learn it.<br><span>Understand it.</span><br>Master it.</h1>
+      <p>Learn Physics through simple explanations, visual lessons, examples, randomized questions and XP.</p>
+      <button class="primary" onclick="showPage('physics')">Start learning →</button>
+    </div>
+    <div class="daily-card">
+      <div class="streak">🔥 <strong id="streak">1</strong> day streak</div>
+      <p>Today's XP goal</p>
+      <div class="bar daily-bar"><div id="dailyProgress"></div></div>
+      <strong><span id="dailyXP">0</span> / 50 XP</strong>
+    </div>
+  </div>
+  <div class="section-heading"><p class="eyebrow">CURRENT SUBJECT</p><h2>⚛️ Physics</h2></div>
+  <div class="continue-card" onclick="showPage('physics')">
+    <div class="big-icon">⚛️</div>
+    <div class="continue-copy">
+      <small>CAMBRIDGE GRADE 8</small>
+      <h2>Physics Learning Path</h2>
+      <p>Measurement → Motion → Density → Mass & Weight → Forces → Momentum → Energy → Pressure → Kinetic Particle Model</p>
+      <div class="bar"><div id="homePhysicsBar"></div></div>
+    </div>
+    <div class="arrow">→</div>
+  </div>
+</section>
+<section id="physics" class="page">
+  <p class="eyebrow">CAMBRIDGE • PHYSICS</p>
+  <h1>Physics Learning Path</h1>
+  <p class="subtitle">Learn, practice and master each topic step by step.</p>
+  <div id="topicMap"></div>
+</section>
+<section id="lesson" class="page">
+  <button class="back" onclick="showPage('physics')">← Physics</button>
+  <div class="lesson-card">
+    <div class="lesson-heading">
+      <div id="lessonIcon" class="lesson-icon">📏</div>
+      <div><p class="eyebrow">LEVEL 1 • LEARN</p><h1 id="lessonTitle"></h1></div>
+      <div class="reward">+5 XP</div>
+    </div>
+    <div class="visual"><div id="visualEmoji">📏</div><h2 id="visualTitle"></h2><p id="visualText"></p></div>
+    <h2>🧠 Simple explanation</h2>
+    <p id="lessonText" class="lesson-text"></p>
+    <div class="remember"><h3>💡 Remember</h3><ul id="rememberList"></ul></div>
+    <div class="example"><h3>🧩 Example</h3><p id="exampleText"></p></div>
+    <div class="actions">
+      <button class="primary" onclick="finishLesson()">I understand — +5 XP</button>
+      <button class="secondary" onclick="practiceCurrentTopic()">Practice this topic</button>
+    </div>
+  </div>
+</section>
+<section id="practice" class="page">
+  <p class="eyebrow">LEVEL 2 • PRACTICE</p><h1>Practice</h1><p class="subtitle">Five randomized questions from the selected topic.</p>
+  <div id="practiceSetup" class="selection-card">
+    <label>Topic<select id="practiceTopic"></select></label>
+    <button class="primary" onclick="startPractice()">Start 5 questions →</button>
+  </div>
+  <div id="practiceQuiz" class="quiz-card hidden">
+    <div class="quiz-top"><span id="practiceCounter"></span><span id="practiceScore"></span></div>
+    <div class="bar"><div id="practiceBar"></div></div>
+    <h2 id="practiceQuestion"></h2><div id="practiceAnswers"></div><div id="practiceFeedback"></div>
+    <button id="practiceNext" class="primary hidden" onclick="nextPractice()">Next →</button>
+  </div>
+</section>
+<section id="challenge" class="page">
+  <p class="eyebrow">LEVEL 3 • CHALLENGE</p><h1>25 Question Challenge</h1><p class="subtitle">Questions and answer choices are randomized.</p>
+  <div id="challengeSetup" class="selection-card">
+    <label>Topic<select id="challengeTopic"></select></label>
+    <button class="primary" onclick="startChallenge()">Begin challenge →</button>
+  </div>
+  <div id="challengeQuiz" class="quiz-card hidden">
+    <div class="quiz-top"><span id="challengeCounter"></span><span id="challengeScore"></span></div>
+    <div class="bar"><div id="challengeBar"></div></div>
+    <h2 id="challengeQuestion"></h2><div id="challengeAnswers"></div><div id="challengeFeedback"></div>
+    <button id="challengeNext" class="primary hidden" onclick="nextChallenge()">Next →</button>
+  </div>
+</section>
+<section id="formulas" class="page">
+  <p class="eyebrow">QUICK REVISION</p><h1>Physics Formula Book 📐</h1><div id="formulaGrid" class="formula-grid"></div>
+</section>
+<section id="progress" class="page">
+  <p class="eyebrow">YOUR JOURNEY</p><h1>Progress</h1>
+  <div class="stats">
+    <div>⭐ <strong id="statXP">0</strong><small>Total XP</small></div>
+    <div>🔥 <strong id="statStreak">1</strong><small>Day streak</small></div>
+    <div>📝 <strong id="statQuestions">0</strong><small>Questions answered</small></div>
+    <div>🎯 <strong id="statAccuracy">0%</strong><small>Accuracy</small></div>
+  </div>
+  <div class="mastery-card"><h2>Physics Mastery</h2><div class="mastery-row"><span>Overall</span><strong id="masteryPercent">0%</strong></div><div class="bar"><div id="masteryBar"></div></div><div id="masteryList"></div></div>
+</section>
+</main>
+<footer>Jabeer Study • Cambridge Grade 8 • Free</footer>
+<script src="app.js"></script>
+</body>
+</html>
+
+Jabeer Cambridge Study Companion — Free Cambridge Grade 8 Physics prototype
+
+Files:
+- index.html
+- style.css
+- app.js
+
+Run locally:
+1. Keep all three files in the same folder.
+2. Open index.html in a browser.
+3. No server or API key is required.
+
+The site currently focuses on Physics and uses original practice questions. Progress is saved in browser localStorage.
+
+*{box-sizing:border-box}:root{--bg:#f5f6fa;--card:#fff;--ink:#172033;--muted:#697287;--line:#e2e6ee;--dark:#202b46;--soft:#eef1f7;--gold:#fff1a8;--green:#dff4e5;--red:#ffe2e2}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,Arial,sans-serif}button,select{font:inherit}button{cursor:pointer}.navbar{height:72px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 5%;position:sticky;top:0;z-index:50}.logo{border:0;background:transparent;font-size:20px;font-weight:900;color:var(--ink)}.navbar nav{display:flex;gap:4px}.navbar nav button{border:0;background:transparent;padding:10px 12px;border-radius:10px;color:var(--muted);font-weight:800}.navbar nav button:hover{background:var(--soft);color:var(--ink)}.xp-pill{background:var(--gold);border:1px solid #ecd67d;padding:9px 14px;border-radius:999px;font-weight:900}main{max-width:1100px;margin:auto;padding:20px 20px 60px}.page{display:none;padding-top:20px}.page.active{display:block}.eyebrow{font-size:11px;letter-spacing:1.5px;font-weight:900;color:#788197;margin:0}.subtitle,.lesson-text,.visual p,.continue-copy p{color:var(--muted);line-height:1.7}.hero{margin-top:10px;background:var(--dark);color:#fff;border-radius:28px;padding:48px;display:flex;justify-content:space-between;gap:28px}.hero h1{font-size:52px;line-height:1.02;margin:10px 0 18px}.hero h1 span{color:#ffe36d}.hero-copy>p:not(.eyebrow){max-width:620px;color:#d4d9e5;line-height:1.7}.daily-card{min-width:260px;align-self:center;background:#ffffff12;border:1px solid #ffffff24;padding:24px;border-radius:20px}.daily-card p{color:#d6dbea}.streak{font-size:22px;margin-bottom:22px}.bar{height:9px;background:#e5e8ef;border-radius:999px;overflow:hidden}.bar>div{height:100%;width:0;background:var(--dark);transition:.3s}.daily-bar{background:#59637d;margin:10px 0}.daily-bar>div{background:#fff}.primary,.secondary{border:0;border-radius:12px;padding:12px 17px;font-weight:900}.primary{background:var(--dark);color:#fff}.secondary{background:var(--soft);color:var(--ink)}.section-heading{margin:42px 0 16px}.continue-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:24px;display:flex;align-items:center;gap:18px;cursor:pointer;transition:.15s}.continue-card:hover{transform:translateY(-2px)}.big-icon{font-size:52px}.continue-copy{flex:1}.continue-copy small{font-weight:900;color:var(--muted)}.continue-copy h2{margin:5px 0}.arrow{font-size:25px}#topicMap{display:grid;gap:12px;margin-top:25px}.topic-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:19px;display:flex;align-items:center;gap:15px}.topic-number{width:44px;height:44px;border-radius:13px;background:var(--soft);display:grid;place-items:center;font-weight:900}.topic-card h3{margin:0 0 5px}.topic-card p{margin:0;color:var(--muted)}.topic-card button{margin-left:auto}.status{font-size:12px;color:var(--muted);font-weight:800}.locked{opacity:.55}.back{border:0;background:transparent;color:var(--muted);font-weight:800;margin-bottom:15px}.lesson-card,.selection-card,.quiz-card,.mastery-card{background:#fff;border:1px solid var(--line);border-radius:21px;padding:26px}.lesson-card{max-width:880px;margin:auto}.lesson-heading{display:flex;align-items:center;gap:14px}.lesson-icon{font-size:46px}.reward{margin-left:auto;background:var(--gold);padding:8px 12px;border-radius:999px;font-weight:900}.visual{background:var(--soft);border-radius:18px;padding:28px;text-align:center;margin:24px 0}.visual>div{font-size:80px}.remember{background:#fff8d7;border:1px solid #efdf97;padding:18px;border-radius:15px;margin:20px 0}.remember li{margin:8px 0}.example{background:#f2f4f8;padding:18px;border-radius:15px;margin-bottom:20px}.actions{display:flex;gap:10px;flex-wrap:wrap}.selection-card{display:flex;align-items:end;gap:14px;flex-wrap:wrap;margin-top:20px}.selection-card label{font-weight:900;display:flex;flex-direction:column;gap:7px}.selection-card select{padding:11px 12px;min-width:310px;border:1px solid var(--line);border-radius:10px;background:#fff}.quiz-card{max-width:850px;margin:20px auto}.quiz-top{display:flex;justify-content:space-between;color:var(--muted);font-weight:900}.quiz-card>.bar{margin:14px 0 28px}.quiz-card h2{line-height:1.5}.answer{width:100%;border:1px solid var(--line);background:#fafbfe;border-radius:12px;padding:14px;text-align:left;font-weight:800;margin:6px 0}.answer:hover{background:var(--soft)}.answer.correct{background:var(--green);border-color:#62aa76}.answer.wrong{background:var(--red);border-color:#d66c6c}#practiceFeedback,#challengeFeedback{min-height:32px;margin:14px 0;font-weight:900}.formula-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:25px}.formula{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px}.formula small{color:var(--muted);font-weight:900}.formula h2{background:var(--soft);border-radius:11px;padding:14px;font-size:17px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:25px}.stats>div{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;flex-direction:column;gap:6px}.stats strong{font-size:27px}.stats small{color:var(--muted)}.mastery-card{margin-top:18px}.mastery-row{display:flex;justify-content:space-between;margin-bottom:7px}.mastery-item{margin:18px 0}.mastery-top{display:flex;justify-content:space-between;font-weight:800;margin-bottom:6px}footer{text-align:center;color:var(--muted);padding:30px;font-size:13px}.hidden{display:none!important}@media(max-width:850px){.navbar nav{display:none}.hero{flex-direction:column;padding:30px}.hero h1{font-size:43px}.daily-card{min-width:0}.formula-grid,.stats{grid-template-columns:repeat(2,1fr)}}@media(max-width:600px){main{padding:15px 15px 55px}.hero h1{font-size:38px}.continue-card{align-items:flex-start}.selection-card{align-items:stretch;flex-direction:column}.selection-card select{min-width:0;width:100%}.formula-grid,.stats{grid-template-columns:1fr}.lesson-heading{flex-wrap:wrap}.reward{margin-left:0}.topic-card{flex-wrap:wrap}.topic-card button{width:100%;margin-left:0}}
